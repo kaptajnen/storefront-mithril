@@ -1,0 +1,31 @@
+{
+	"name": "app",
+	"version": "0.0.1",
+	"description": "",
+	"main": "src/app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"watch": "watchify src/app.js -o public/app.js -p [parcelify -wo public/style.css] -g [envify --NODE_ENV development] -v -d",
+		"build": "browserify src/app.js -o public/app.js -p [parcelify -o public/style.css] -g [envify --NODE_ENV production] -g uglifyify && cleancss -o public/style.css public/style.css",
+		"serve": "http-server",
+		"dev": "npm-run-all --parallel watch serve"
+	},
+	"author": "Jonas Laursen",
+	"license": "ISC",
+	"devDependencies": {
+		"browserify": "^14.4.0",
+		"clean-css-cli": "^4.1.10",
+		"envify": "^4.1.0",
+		"http-server": "^0.10.0",
+		"mithril": "^1.1.5",
+		"npm-run-all": "^4.1.1",
+		"parcelify": "^2.2.0",
+		"sass-css-stream": "^0.1.6",
+		"uglifyify": "^4.0.4",
+		"watchify": "^3.9.0"
+	},
+	"style": "src/theme.scss",
+	"transforms": [
+		"sass-css-stream"
+	]
+}
